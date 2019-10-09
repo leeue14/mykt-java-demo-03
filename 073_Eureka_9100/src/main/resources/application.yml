@@ -1,6 +1,6 @@
 ###服务端口号
 server:
-  port: 8100
+  port: 8200
 ###eureka 基本信息配置
 spring:
   application:
@@ -12,7 +12,7 @@ eureka:
 #    instance-id: ${eureka.instance.hostname}:${server.port}:@project.version@
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:8200/eureka/
+      defaultZone: http://127.0.0.1:8100/eureka/
     ###因为自己是为注册中心，不需要自己注册自己
     register-with-eureka: true
     ###因为自己是为注册中心，不需要检索服务
