@@ -1,0 +1,16 @@
+###服务启动端口号
+server:
+  port: 8000
+###服务名称(服务注册到eureka名称)
+spring:
+  application:
+    name: leeue-rs
+###服务注册到eureka地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka
+    ###需要向eureka上注册 就设置为true
+    register-with-eureka: true
+    ###需要从eureka上获取注册信息
+    fetch-registry: true
