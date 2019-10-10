@@ -17,3 +17,9 @@ eureka:
     register-with-eureka: true
     ###因为自己是为注册中心，不需要检索服务
     fetch-registry: true
+
+  # Eureka服务保护机制配置 在服务端加EurekaServer
+  server:
+    # 本地或测试环境，关闭自我保护机制，保证不可用服务及时剔除
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000
