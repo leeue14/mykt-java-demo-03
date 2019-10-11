@@ -25,6 +25,13 @@
     </properties>
 
     <dependencies>
+
+        <!--        SpringCloud 整合Fegin-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+<!--      SpringCloud 整合eureka  -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
