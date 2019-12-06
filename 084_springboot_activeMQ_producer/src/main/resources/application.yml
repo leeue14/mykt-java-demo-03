@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+queue: springboot-queue
+topic: springboot-topic
+

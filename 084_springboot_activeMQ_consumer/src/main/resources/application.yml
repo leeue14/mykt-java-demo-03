@@ -1,0 +1,17 @@
+server:
+  port: 8082
+
+spring:
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+  #####################################################################
+  # SpringBoot 默认是没有开启发布订阅的功能的 需要手动进行开启                #
+  #####################################################################
+  jms:
+    pub-sub-domain: true
+
+queue: springboot-queue
+topic: springboot-topic
+
