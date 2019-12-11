@@ -8,5 +8,13 @@
     <artifactId>090_rabbitmq_demo_transaction</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--        rabbitmq,客户端-->
+    <dependencies>
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>3.6.5</version>
+        </dependency>
+    </dependencies>
 
 </project>
