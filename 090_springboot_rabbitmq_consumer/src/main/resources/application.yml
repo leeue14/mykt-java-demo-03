@@ -1,0 +1,21 @@
+server:
+  port: 8130
+spring:
+  rabbitmq:
+    host: 120.78.185.72
+    username: admin
+    password: admin
+    ####virtual-host 地址 如果写成 / 所有的主机都会有####
+    virtual-host: /test01_host
+    #    开启消费者重试
+    listener:
+      simple:
+        retry:
+          #    开启消费者重试
+          enabled: true
+          #    最大重试次数
+          max-attempts: 5
+          #    重试间隔时间 设置5秒。 也就是 在 25秒内没有回应，就会放弃这条消息
+          initial-interval: 50000
+          ## 开启手动应答签收模式
+        acknowledge-mode: manual

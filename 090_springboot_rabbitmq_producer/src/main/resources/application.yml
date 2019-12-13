@@ -1,0 +1,9 @@
+server:
+  port: 8120
+spring:
+  rabbitmq:
+    host: 120.78.185.72
+    username: admin
+    password: admin
+    ####virtual-host 地址 如果写成 / 所有的主机都会有####
+    virtual-host: /test01_host
