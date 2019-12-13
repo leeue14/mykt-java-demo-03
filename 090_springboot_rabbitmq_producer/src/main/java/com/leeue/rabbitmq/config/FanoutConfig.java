@@ -1,13 +1,13 @@
 package com.leeue.rabbitmq.config;
 
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.FanoutExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -20,6 +20,21 @@ import org.springframework.stereotype.Component;
 @Configuration
 @Component
 public class FanoutConfig {
+
+    /******死信队列应用*******/
+
+    private static final String deadQueueName = "dead_queue";
+    private static final String deadRoutingKey = "dead_roting_key";
+    private static final String deadExchangeName = "dead_exchange";
+
+    /**
+     * 死信队列 交换机标识符
+     */
+    public static final String DEAD_LETTER_QUEUE_KEY = "x-dead-letter-exchange";
+    /**
+     * 死信队列交换机绑定键标识符
+     */
+    public static final String DEAD_LETTER_ROUTING_KEY = "x-dead-letter-routing-key";
 
     /**
      * 1.定义队列 邮件队列名称
@@ -43,7 +58,13 @@ public class FanoutConfig {
     @Bean
     public Queue fanoutEmailQueue() {
 
-        return new Queue(FANOUT_EMAIL_QUEUE);
+        //邮件队列绑定死信队列
+        Map<String, Object> args = new HashMap<>();
+
+        args.put(DEAD_LETTER_QUEUE_KEY, deadExchangeName);
+        args.put(DEAD_LETTER_ROUTING_KEY, deadRoutingKey);
+
+        return new Queue(FANOUT_EMAIL_QUEUE, true, false, false, args);
     }
 
     /**
@@ -68,7 +89,6 @@ public class FanoutConfig {
         return new FanoutExchange(FANOUT_EXCHANGE);
     }
 
-
     /**
      * 队列和交换机进行绑定 邮件和交换机绑定
      *
@@ -79,7 +99,6 @@ public class FanoutConfig {
 
         return BindingBuilder.bind(fanoutEmailQueue).to(fanoutExchange);
     }
-
 
     /**
      * 队列和交换机进行绑定 消息和交换机绑定  这里参数的名称 一定要和 方法名称要一致。
@@ -94,5 +113,40 @@ public class FanoutConfig {
         return BindingBuilder.bind(fanoutSmsQueue).to(fanoutExchange);
     }
 
+    /***************************************RabbitMQ死信队列***************************************/
 
+    /**
+     * 1. 创建死信队列
+     */
+    @Bean
+    public Queue deadQueue() {
+
+        Queue queue = new Queue(deadQueueName, true);
+
+        return queue;
+    }
+
+    /**
+     * 2.创建死信交换机
+     *
+     * @return
+     */
+    @Bean
+    public DirectExchange deadExchange() {
+
+        return new DirectExchange(deadExchangeName);
+    }
+
+    /**
+     * 3、 绑定死信队列和死信交换机
+     *
+     * @param deadQueue
+     * @param deadExchange
+     * @return
+     */
+    @Bean
+    public Binding bindingDeadExchange(Queue deadQueue, DirectExchange deadExchange) {
+
+        return BindingBuilder.bind(deadQueue).to(deadExchange).with(deadRoutingKey);
+    }
 }

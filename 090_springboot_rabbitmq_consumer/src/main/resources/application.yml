@@ -17,5 +17,5 @@ spring:
           max-attempts: 5
           #    重试间隔时间 设置5秒。 也就是 在 25秒内没有回应，就会放弃这条消息
           initial-interval: 50000
-          ## 开启手动应答签收模式
+          ## 开启手动应答签收模式 手动ack
         acknowledge-mode: manual

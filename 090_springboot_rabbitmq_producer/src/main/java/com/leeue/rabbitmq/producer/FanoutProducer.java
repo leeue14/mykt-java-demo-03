@@ -2,6 +2,7 @@ package com.leeue.rabbitmq.producer;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,13 +38,13 @@ public class FanoutProducer {
         String msg = JSONObject.toJSONString(msgMap);
 
         //生产者设置消息id
-        MessageBuilder.withBody(msg.getBytes())
+        Message message = MessageBuilder.withBody(msg.getBytes())
                 .setContentType(MessageProperties.CONTENT_TYPE_JSON)
                 .setContentEncoding("utf-8")
                 .setMessageId(UUID.randomUUID() + "设置全局消息id").build();
 
         //先发送消息  路由策略等，都是这样操作的
-        amqpTemplate.convertAndSend(queueName, msg);
+        amqpTemplate.convertAndSend(queueName, message);
     }
 
 }
