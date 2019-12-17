@@ -1,0 +1,27 @@
+###服务启动端口号
+server:
+  port: 8003
+###服务名称(服务注册到eureka名称)
+spring:
+  application:
+    name: leeue-springcloud-config
+  cloud:
+    config:
+      server:
+        git:
+          #         这个就是读取git环境地址
+          uri: https://gitee.com/leeue14/config-leeue.git
+          search-paths:
+            #            读取文件目录地址
+            - springcloud-bus-config
+          #           读取分支地址
+          default-label: master
+###服务注册到eureka地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka
+    ###需要向eureka上注册 就设置为true
+    register-with-eureka: true
+    ###需要从eureka上获取注册信息
+    fetch-registry: true
