@@ -16,6 +16,14 @@ spring:
             - springcloud-bus-config
           #           读取分支地址
           default-label: master
+    ###### rabbitmq 配置 #####
+    bus:
+      trace:
+        enabled: true
+  rabbitmq:
+    host: 127.0.0.1
+    username: admin
+    password: admin
 ###服务注册到eureka地址
 eureka:
   client:
@@ -25,3 +33,10 @@ eureka:
     register-with-eureka: true
     ###需要从eureka上获取注册信息
     fetch-registry: true
+
+### springcloud bus 配置 ####
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
