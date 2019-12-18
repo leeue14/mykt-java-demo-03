@@ -1,5 +1,5 @@
 server:
-  port: 9100
+  port: 9200
 spring:
   application:
     name: spingcloud-stream-consumer
@@ -11,3 +11,10 @@ spring:
   cloud:
     stream:
       default-binder: rabbit
+      ### 消费者分组 多个消费者的时候使用轮询机制
+      bindings:
+        ### 指定管道名称 和监听的交换机一致
+        my_stream_test:
+          ###属于stream消费者 随便定义
+          group: stream
+
