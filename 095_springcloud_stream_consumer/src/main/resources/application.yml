@@ -1,0 +1,13 @@
+server:
+  port: 9100
+spring:
+  application:
+    name: spingcloud-stream-consumer
+  rabbitmq:
+    host: 120.78.185.72
+    username: admin
+    password: admin
+
+  cloud:
+    stream:
+      default-binder: rabbit

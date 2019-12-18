@@ -1,0 +1,13 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: spingcloud-stream-producer
+  rabbitmq:
+    host: 120.78.185.72
+    username: admin
+    password: admin
+
+  cloud:
+    stream:
+      default-binder: rabbit
