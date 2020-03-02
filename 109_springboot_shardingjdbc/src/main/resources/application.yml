@@ -1,0 +1,30 @@
+mybatis-plus:
+  #  mapper-locations: classpath*:/mapper/*.xml
+  global-config:
+    db-config:
+      column-underline: true
+#shardingjdbc配置      
+sharding:
+  jdbc:
+    data-sources:
+      ###配置第一个从数据库
+      ds_slave_0:
+        password: 123456
+        jdbc-url: jdbc:mysql://192.168.2.20:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+      ###主数据库配置  
+      ds_master:
+        password: 123456
+        jdbc-url: jdbc:mysql://192.168.2.180:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+    ###配置读写分离    
+    master-slave-rule:
+      ###配置从库选择策略，提供轮询与随机，这里选择用轮询
+      load-balance-algorithm-type: round_robin
+      ####指定从数据库
+      slave-data-source-names: ds_slave_0
+      name: ds_ms
+      ####指定主数据库
+      master-data-source-name: ds_master
