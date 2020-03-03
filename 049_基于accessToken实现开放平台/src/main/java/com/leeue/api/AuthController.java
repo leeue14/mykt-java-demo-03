@@ -7,12 +7,12 @@
 package com.leeue.api;
 
 import com.alibaba.fastjson.JSONObject;
-import com.leeue.base.BaseApiService;
-import com.leeue.base.ResponseBase;
+import com.base.BaseApiService;
+import com.base.ResponseBase;
 import com.leeue.entity.AppEntity;
 import com.leeue.mapper.AppMapper;
-import com.leeue.utils.BaseRedisService;
-import com.leeue.utils.TokenUtils;
+import com.utils.BaseRedisService;
+import com.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

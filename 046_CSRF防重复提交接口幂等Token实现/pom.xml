@@ -40,7 +40,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        
+        <dependency>
+            <groupId>com.com.leeue.leeue</groupId>
+            <artifactId>048_API接口幂等性框架</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
 </project>

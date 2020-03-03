@@ -1,9 +1,9 @@
 package com.leeue.api;
 
-import com.leeue.base.BaseApiService;
-import com.leeue.utils.BaseRedisService;
-import com.leeue.utils.Constants;
-import com.leeue.utils.TokenUtils;
+import com.base.BaseApiService;
+import com.utils.BaseRedisService;
+import com.utils.Constants;
+import com.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

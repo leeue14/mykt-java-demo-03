@@ -6,8 +6,8 @@
  */
 package com.leeue.api;
 
-import com.leeue.base.BaseApiService;
-import com.leeue.base.ResponseBase;
+import com.base.BaseApiService;
+import com.base.ResponseBase;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

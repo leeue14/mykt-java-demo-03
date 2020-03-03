@@ -1,8 +1,8 @@
 package com.api;
 
 import com.alibaba.fastjson.JSONObject;
-import com.leeue.utils.HttpClientUtils;
-import com.leeue.utils.WeiXinUtils;
+import com.utils.HttpClientUtils;
+import com.utils.WeiXinUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;

@@ -1,8 +1,8 @@
 package com.leeue.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.leeue.base.BaseApiService;
-import com.leeue.utils.BaseRedisService;
+import com.base.BaseApiService;
+import com.utils.BaseRedisService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
